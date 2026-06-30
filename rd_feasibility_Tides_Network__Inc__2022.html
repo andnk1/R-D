@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R&amp;D Tax Credit Feasibility Study - Tides.Network, Inc. 2022</title>
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 9pt;
+    color: #1a1a1a;
+    background: #d8dde6;
+    padding: 1.2rem 0 2rem 0;
+}
+
+.page {
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto 1.2rem auto;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,.22);
+    display: flex;
+    flex-direction: column;
+}
+
+@media print {
+    body { background: #fff; padding: 0; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .page {
+        box-shadow: none; margin: 0; width: 100%;
+        page-break-after: always; page-break-inside: avoid;
+    }
+    .page:last-child { page-break-after: avoid; }
+}
+@page { size: 8.5in 11in; margin: 0; }
+
+/* ── Page chrome ── */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.32rem 0.9in;
+    background: #003366;
+    color: #fff;
+    font-size: 7.5pt;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+}
+.page-header span { flex: 1; }
+.page-header span:nth-child(2) { text-align: center; }
+.page-header span:last-child   { text-align: right; }
+
+.page-content {
+    flex: 1;
+    padding: 0.5in 0.9in 0.3in 0.9in;
+    overflow: hidden;
+}
+
+.page-footer {
+    flex-shrink: 0;
+    padding: 0 0.9in 0.28in 0.9in;
+}
+.footer-rule { border: none; border-top: 1px solid #b8c8d8; margin-bottom: 0.2rem; }
+.footer-text  { font-size: 7pt; color: #888; text-align: center; letter-spacing: 0.5px; }
+
+/* ── Cover page ── */
+.cover-content {
+    flex: 1;
+    padding: 0.6in 0.9in 0.4in 0.9in;
+    display: flex;
+    flex-direction: column;
+}
+.cover-logo { height: 264px; margin-bottom: 0.45in; }
+.cover-title-block {
+    text-align: center;
+    border-bottom: 3px solid #003366;
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+.cover-title-block h1 {
+    font-size: 17pt; font-weight: bold;
+    color: #003366; letter-spacing: 0.5px; line-height: 1.25;
+}
+.cover-title-block h2 { font-size: 26pt; font-weight: bold; color: #003366; margin-top: 0.4rem; }
+.cover-title-block h3 { font-size: 13pt; color: #003366; margin-top: 0.2rem; font-weight: bold; }
+.cover-bottom-info {
+    margin-top: auto;
+    text-align: right;
+    font-size: 9pt;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* ── Cover letter ── */
+.cover-letter { flex: 1; }
+.letter-date  { font-size: 9pt; margin: 0.4rem 0; }
+.letter-re    { font-size: 9pt; font-weight: bold; margin: 0.5rem 0 0.7rem; }
+.cover-letter p {
+    font-size: 9pt; line-height: 1.65;
+    margin-bottom: 0.6rem; text-align: justify; color: #1a1a1a;
+}
+.toc-sub {
+    padding-left: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem !important;
+    color: #003366;
+}
+
+/* ── Page section divider (e.g. "7. Documentation") ── */
+.page-section-divider {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #003366;
+    border-bottom: 2px solid #d0daea;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.6rem;
+}
+
+/* ── Info cards with teal bullets ── */
+.card-header {
+    background: #003366;
+    color: #fff;
+    font-size: 9.5pt;
+    font-weight: bold;
+    padding: 0.3rem 0.75rem;
+    border-radius: 5px 5px 0 0;
+    letter-spacing: 0.2px;
+    margin-top: 1.1rem;    /* spacing between sections */
+}
+.card-header:first-child,
+.page-section-divider + .card-header {
+    margin-top: 0;         /* no top gap for first card on page */
+}
+
+.bullet-list {
+    background: #f5f8fc;
+    border: 1px solid #d0daea;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 0.45rem 0.75rem 0.4rem 0.75rem;
+    margin-bottom: 0;
+}
+
+.bullet-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.42rem;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    gap: 0.5rem;
+}
+.bullet-item:last-child { margin-bottom: 0.1rem; }
+
+.bullet-dot {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    min-width: 11px;
+    background: #0e7490;
+    border-radius: 50%;
+    margin-top: 3px;
+}
+
+/* ── Compact group: tighter inter-card spacing for 4.1–4.4 page ── */
+.compact-group .card-header {
+    margin-top: 0.45rem;
+}
+.compact-group .card-header:first-child { margin-top: 0; }
+.compact-group .bullet-item {
+    margin-bottom: 0.28rem;
+    line-height: 1.45;
+}
+.compact-group .bullet-list {
+    padding: 0.3rem 0.75rem 0.25rem 0.75rem;
+}
+
+/* ── Scenario pages ── */
+.scenario-title {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #003366;
+    border-bottom: 2.5px solid #003366;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.55rem;
+}
+.info-pill {
+    background: #eef3fa;
+    border: 1px solid #c2d2e8;
+    border-radius: 20px;
+    padding: 0.2rem 0.7rem;
+    font-size: 8pt;
+    display: flex;
+    gap: 0.35rem;
+    align-items: center;
+}
+.pill-label { color: #555; }
+.pill-value { font-weight: bold; color: #003366; }
+
+.qre-grid {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    background: #f5f8fc;
+    border: 1px solid #d0daea;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.2rem;
+}
+.qre-card {
+    flex: 1;
+    min-width: 1.3in;
+    background: #fff;
+    border: 1px solid #d0daea;
+    border-radius: 6px;
+    padding: 0.4rem 0.5rem;
+    text-align: center;
+}
+.qre-card.qre-total {
+    background: #e8eef8;
+    border-color: #aabbd4;
+    font-weight: bold;
+}
+.qre-label { font-size: 7.5pt; color: #555; margin-bottom: 0.2rem; }
+.qre-value { font-size: 9.5pt; font-weight: bold; color: #003366; }
+.method-row {
+    background: #f5f8fc;
+    border: 1px solid #d0daea;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 0.35rem 0.75rem;
+    font-size: 8.5pt;
+    margin-bottom: 0.4rem;
+}
+.method-label { color: #555; }
+.method-value { font-weight: bold; color: #003366; margin-left: 0.3rem; }
+
+.credit-banner {
+    background: linear-gradient(135deg, #002855 0%, #0047a0 100%);
+    border-radius: 10px;
+    padding: 0.9rem 1.2rem;
+    text-align: center;
+    margin: 0.5rem 0 0.4rem 0;
+    box-shadow: 0 3px 12px rgba(0,40,100,.25);
+}
+.credit-banner-label {
+    font-size: 10pt;
+    color: #a8c4e8;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+}
+.credit-banner-amount {
+    font-size: 30pt;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+}
+.credit-banner-amount.insufficient {
+    font-size: 14pt;
+    color: #ffc78a;
+}
+.tax-savings-row {
+    margin-top: 0.4rem;
+    padding-top: 0.35rem;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 9pt;
+    color: #c8ddf5;
+}
+.savings-amount {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #7de8a0;
+}
+
+.warning-note {
+    background: #fff8e1;
+    border-left: 3px solid #f0a000;
+    padding: 0.3rem 0.6rem;
+    font-size: 8pt;
+    color: #5a3e00;
+    border-radius: 0 4px 4px 0;
+    margin-top: 0.35rem;
+    line-height: 1.5;
+}
+
+</style>
+</head>
+<body>
+<div class="page"><div class="cover-content"><img src="data:image/png;base64,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" class="cover-logo" alt="CFO Associates"><div class="cover-title-block"><h1>Research &amp; Development Tax Credit</h1><h3>Feasibility Study</h3><h2>Tides.Network, Inc.</h2></div><div class="cover-bottom-info"><div>Tax Year 2022</div><div>Prepared by Andreea Constantinescu</div></div></div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page">
+<div class="cover-content"><div class="cover-letter"><p class="letter-date">2026-06-20</p>
+<p>EIN: 83-0693288</p>
+<p>Tides.Network, Inc. Research &amp; Development Tax Credit Feasibility Study</p>
+<p>Enclosed is the preliminary R&amp;D tax credit feasibility study prepared for your review. This report provides a high-level overview of the Research and Development (R&amp;D) Tax Credit under Section 41, a summary of qualifying activities and expenses, and preliminary credit estimates based on the information provided. This study is intended to assist in planning and to support a discussion of the potential federal R&amp;D tax credit benefit. The estimated credit benefit will depend on the company’s actual qualified research expenses, gross receipts history, prior-year R&amp;D expenses, available documentation, entity type, tax liability, and other applicable limitations.</p>
+<p></p>
+<p>Table of Contents:</p>
+<p></p>
+<p>1. R&amp;D Credit Overview</p>
+<p>2. Qualifying and Non-Qualifying Activities</p>
+<p>3. Qualified Research Expenses Review</p>
+<p>4. Supporting Documentation for Qualified Research Expenses</p>
+<p>5. IRS Scrutiny and Management Responsibility</p>
+<p>6. Potential Tax Savings</p>
+<p>7. Important Limitations and Disclaimers</p>
+<p>8. Scenario Analysis</p>
+</div></div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">1. R&amp;D Credit Overview</div>
+<div class="card-header">1.1 R&amp;D Credit Overview</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>The federal R&amp;D tax credit is available to companies that invest time and resources into developing or improving products, software, processes, techniques, formulas, or other business components.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Technology, software, manufacturing, engineering, product-development, and process-improvement companies may qualify when the work involves technical uncertainty and experimentation.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The activity does not have to result in a commercially successful product. Abandoned projects, prototypes, redesigns, and iterative testing may still be relevant if the work was intended to resolve technical uncertainty.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The credit can reduce federal income tax dollar-for-dollar and, for certain qualified small businesses, may also be available as a payroll tax credit election.</span></div>
+</div>
+<div class="card-header">1.2 Payroll Tax Credit Option</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>If the company has limited taxable income or is operating at a loss, the R&amp;D credit may still provide a benefit if the company qualifies for the payroll tax credit election.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The maximum payroll tax credit election is generally $500,000 per year, subject to applicable limitations.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>This option is only available if the company qualifies as a Qualified Small Business (QSB) for thepayroll tax election and must be coordinated with the income tax return and payroll tax filings.</span></div>
+</div>
+<div class="card-header">1.3 Domestic R&amp;D Deduction and Section 280C Considerations</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>For tax years beginning after December 31, 2024, domestic research or experimental costs may be currently deducted under Section 174A, subject to applicable rules and elections.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The R&amp;D credit calculation is separate from the deduction calculation, but the two items interact for tax purposes.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Using the Section 280C reduced credit approach can simplify the presentation by reducing the credit amount instead of requiring a separate reduction to the related deduction.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>In general, the advantage after the recent law change is that qualifying domestic R&amp;D costs may provide both a current deduction and a reduced R&amp;D credit, subject to the company's facts and limitations.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>State tax treatment may be different from federal treatment and should be reviewed separately.</span></div>
+</div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">2. Qualifying and Non-Qualifying Activities</div>
+<div class="card-header">2.1 Activities That Qualify</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>Developing new or improved software, platforms, applications, tools, or internal systems.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Improving product functionality, performance, reliability, quality, or efficiency.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Testing different technical approaches, designs, formulas, prototypes, or engineering methods.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Resolving technical uncertainty through trial and error, modeling, testing, debugging, or iterative development.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Designing or improving manufacturing, production, or engineering processes.</span></div>
+</div>
+<div class="card-header">2.2 Activities That Generally Do Not Qualify</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>Routine maintenance or cosmetic changes that do not involve technical uncertainty.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Administrative, sales, marketing, customer support, or general management activities.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Training, implementation, or data entry unrelated to technical development.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Research conducted after the product or process is ready for commercial use, unless additional qualified development is performed.</span></div>
+</div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">3. Qualified Research Expenses Review</div>
+<div class="card-header">3.1 Qualified Research Expenses:</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>Wages - paid to employees directly supervising or directly supporting qualified research.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Supplies  - used or consumed in the research process.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>U.S. contractors - eligible payments to  performing qualified research on behalf of the company.Commonly, only 65% of eligible U.S. contractor costs are included inqualified research expenses.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Computer rental -  cloud computing, development environment, testing environment, model-training, or usage-based AI compute costs, general hosting</span></div>
+</div>
+<div class="card-header">3.2 Foreign R&amp;D Contractors</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>Foreign contractor costs are generally not eligible for the federal Section 41 R&amp;D credit.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Foreign R&amp;D costs generally must be capitalized and amortized over 15 years, which can significantly reduce the current-year deduction.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>For depreciation calculations, we need contractor location, amount paid, estimated time spent on qualified research, and a description of the work performed.</span></div>
+</div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">4. Supporting Documentation for Qualified Research Expenses</div>
+<div class="compact-group">
+<div class="card-header">4.1 General Project Support and Company Description</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>Brief description of the company, its products or services, and the business components developed or improved during the year.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Project descriptions explaining what was developed or improved.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Description of the technical uncertainty or challenge the company was trying to resolve.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Evidence of alternatives evaluated, testing performed, and changes made during development.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Technical notes, design records, engineering reports, product roadmaps, tickets, version history, GitHub/Jira records, prototypes, test results, or project timelines.</span></div>
+</div>
+<div class="card-header">4.2 Documentation: Employee Wages</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>Employee names, job titles, departments, and role descriptions.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Description of each employee’s involvement in qualified research projects..Payroll records supporting total wages paid during the year, including W-2 wage information when applicable.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Time tracking, project tracking, management estimates, or other records supporting the percentage of time spent on qualified activities.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Management should be able to explain and support how wage allocations were determined.</span></div>
+</div>
+<div class="card-header">4.3 Documentation: Supplies</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>Invoices, receipts, purchase records, or general ledger detail for supplies included in the claim.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Description of how the supplies were used or consumed in qualified research activities.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Exclude general office supplies, capital assets, equipment, or costs not directly tied to qualified research.</span></div>
+</div>
+<div class="card-header">4.4 Documentation: U.S. Contractors</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>Signed contracts, statements of work, proposals, invoices, and payment records.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Description of the research or development work performed by the contractor.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Support showing the contractor performed technical development, testing, design, or experimentation rather than routine services.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Confirmation that the work was performed in the United States when claimed as U.S. contract research.</span></div>
+</div>
+</div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">5. IRS Scrutiny and Management Responsibility</div>
+<div class="card-header">5. IRS Scrutiny and Management Responsibility</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>R&amp;D credit claims have received increased IRS attention, especially where claims are based on broad estimates, unsupported payroll percentages, or limited project documentation.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>CFO Associates will review the information provided, ask follow-up questions, perform reasonableness checks, and prepare the calculation based on available facts.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The company must maintain records in sufficient detail to support the activities, projects, employees, contractors, and expenses included in the claim.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Management is ultimately responsible for confirming that the activities qualify and that adequate documentation exists to support the credit if the IRS examines the return.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The strongest R&amp;D claims are supported by project-level records, employee involvement, contractor support, and a clear connection between the technical work and the costs claimed.</span></div>
+</div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">6. Potential Tax Savings</div>
+<div class="card-header">6.1 C Corporation Tax Impact</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>For a C corporation, the federal R&amp;D credit generally reduces corporate income tax dollar-for-dollar, subject to applicable limitations.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The regular federal corporate income tax rate is 21%, so deductible expenses generally reduce tax at approximately 21 cents per dollar before considering other limitations.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Foreign R&amp;D amortization can reduce the current-year deduction and may increase taxable income compared with book expenses.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The net benefit should be modeled by comparing the credit benefit, deduction impact, taxable income, net operating losses, and any payroll tax credit election.</span></div>
+</div>
+<div class="card-header">6.2 S Corporation Tax Impact</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>For an S corporation, the R&amp;D credit generally flows through to the shareholders and is reported on their individual income tax returns.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The company-level calculation determines the credit amount, but the actual tax savings is determined at the shareholder level.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The benefit depends on the shareholders' personal tax situation, income tax liability, basis, passive activity limitations, AMT considerations, and other credit limitations.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>If the company qualifies for the payroll tax credit election, part of the credit may be used against payroll taxes instead of, or before, shareholder-level income tax benefit.</span></div>
+</div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">7. Important Limitations and Disclaimers</div>
+<div class="card-header">7.1 Important Limitations and Disclaimers</div>
+<div class="bullet-list">
+<div class="bullet-item"><span class="bullet-dot"></span><span>All numbers shown in this presentation are estimates unless otherwise stated.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>Actual tax savings may differ based on final qualified research expenses, gross receipts, prior-year data, tax liability, entity type, ownership, payroll election eligibility, net operating losses, and Section 174/174A treatment.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>A credit estimate does not guarantee that the company can use the full credit in the current year.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>The R&amp;D credit should be claimed only when the company has a reasonable basis and adequate records to support both the activities and the related costs.</span></div>
+<div class="bullet-item"><span class="bullet-dot"></span><span>This presentation is for planning and discussion purposes and should be finalized after review of the company's actual facts and records.</span></div>
+</div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">8. Scenario Analysis</div>
+<div class="scenario-title">Scenario 1 &mdash; R&amp;D Tax Credit Estimate</div>
+<div class="info-pills"><div class="info-pill"><span class="pill-label">Company</span><span class="pill-value">Tides.Network, Inc.</span></div><div class="info-pill"><span class="pill-label">Tax Year</span><span class="pill-value">2022</span></div><div class="info-pill"><span class="pill-label">Entity</span><span class="pill-value">C Corporation</span></div><div class="info-pill"><span class="pill-label">280C Election</span><span class="pill-value">Yes</span></div></div>
+<div class="card-header" style="margin-top:0">Qualified Research Expenses (QRE)</div><div class="qre-grid"><div class="qre-card"><div class="qre-label">Wages</div><div class="qre-value">$1,892,070.80</div></div><div class="qre-card"><div class="qre-label">Supplies</div><div class="qre-value">$55,000.00</div></div><div class="qre-card"><div class="qre-label">Computers / Cloud</div><div class="qre-value">$5,000.00</div></div><div class="qre-card"><div class="qre-label">Contract Research (65%)</div><div class="qre-value">$49,180.30</div></div><div class="qre-card qre-total"><div class="qre-label">Total QREs</div><div class="qre-value">$2,001,251.10</div></div></div>
+<div class="card-header" style="margin-top:0.5rem">Credit Calculation Method</div><div class="method-row"><span class="method-label">Method Applied:</span><span class="method-value">Regular Credit Method — 280C reduced credit (15.8%)</span></div>
+<div class="credit-banner"><div class="credit-banner-label">Estimated Federal R&amp;D Tax Credit</div><div class="credit-banner-amount">$158,098.84</div><div class="tax-savings-row"><span>Potential Tax Savings (C Corporation @ 21%)</span><span class="savings-amount">$33,200.76</span></div></div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">8. Scenario Analysis</div>
+<div class="scenario-title">Scenario 2 &mdash; R&amp;D Tax Credit Estimate</div>
+<div class="info-pills"><div class="info-pill"><span class="pill-label">Company</span><span class="pill-value">Tides.Network, Inc.</span></div><div class="info-pill"><span class="pill-label">Tax Year</span><span class="pill-value">2023</span></div><div class="info-pill"><span class="pill-label">Entity</span><span class="pill-value">C Corporation</span></div><div class="info-pill"><span class="pill-label">280C Election</span><span class="pill-value">Yes</span></div></div>
+<div class="card-header" style="margin-top:0">Qualified Research Expenses (QRE)</div><div class="qre-grid"><div class="qre-card"><div class="qre-label">Wages</div><div class="qre-value">$1,873,212.69</div></div><div class="qre-card"><div class="qre-label">Supplies</div><div class="qre-value">$55,000.00</div></div><div class="qre-card"><div class="qre-label">Computers / Cloud</div><div class="qre-value">$5,000.00</div></div><div class="qre-card"><div class="qre-label">Contract Research (65%)</div><div class="qre-value">$778,561.17</div></div><div class="qre-card qre-total"><div class="qre-label">Total QREs</div><div class="qre-value">$2,711,773.86</div></div></div>
+<div class="card-header" style="margin-top:0.5rem">Credit Calculation Method</div><div class="method-row"><span class="method-label">Method Applied:</span><span class="method-value">Regular Credit Method — 280C reduced credit (15.8%)</span></div>
+<div class="credit-banner"><div class="credit-banner-label">Estimated Federal R&amp;D Tax Credit</div><div class="credit-banner-amount">$214,230.13</div><div class="tax-savings-row"><span>Potential Tax Savings (C Corporation @ 21%)</span><span class="savings-amount">$44,988.33</span></div></div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+<div class="page"><div class="page-header"><span>Tides.Network, Inc.</span><span>R&amp;D Tax Credit Feasibility Study</span><span>Tax Year 2022</span></div><div class="page-content"><div class="page-section-divider">8. Scenario Analysis</div>
+<div class="scenario-title">Scenario 3 &mdash; R&amp;D Tax Credit Estimate</div>
+<div class="info-pills"><div class="info-pill"><span class="pill-label">Company</span><span class="pill-value">Tides.Network, Inc.</span></div><div class="info-pill"><span class="pill-label">Tax Year</span><span class="pill-value">2024</span></div><div class="info-pill"><span class="pill-label">Entity</span><span class="pill-value">C Corporation</span></div><div class="info-pill"><span class="pill-label">280C Election</span><span class="pill-value">Yes</span></div></div>
+<div class="card-header" style="margin-top:0">Qualified Research Expenses (QRE)</div><div class="qre-grid"><div class="qre-card"><div class="qre-label">Wages</div><div class="qre-value">$2,109,744.02</div></div><div class="qre-card"><div class="qre-label">Supplies</div><div class="qre-value">$55,000.00</div></div><div class="qre-card"><div class="qre-label">Computers / Cloud</div><div class="qre-value">$5,000.00</div></div><div class="qre-card"><div class="qre-label">Contract Research (65%)</div><div class="qre-value">$667,282.66</div></div><div class="qre-card qre-total"><div class="qre-label">Total QREs</div><div class="qre-value">$2,837,026.68</div></div></div>
+<div class="card-header" style="margin-top:0.5rem">Credit Calculation Method</div><div class="method-row"><span class="method-label">Method Applied:</span><span class="method-value">Regular Credit Method — 280C reduced credit (15.8%)</span></div>
+<div class="credit-banner"><div class="credit-banner-label">Estimated Federal R&amp;D Tax Credit</div><div class="credit-banner-amount">$224,125.11</div><div class="tax-savings-row"><span>Potential Tax Savings (C Corporation @ 21%)</span><span class="savings-amount">$47,066.27</span></div></div>
+</div><div class="page-footer"><hr class="footer-rule"><div class="footer-text">CFO Associates &nbsp;|&nbsp; Confidential — For Discussion Purposes Only</div></div></div>
+</body>
+</html>
